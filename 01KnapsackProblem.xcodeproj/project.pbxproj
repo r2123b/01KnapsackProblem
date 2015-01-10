@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B72D36051A4BAF4600406353 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B72D36041A4BAF4600406353 /* main.cpp */; };
+		B7E1810E1A5D51F2008304BB /* usingFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7E1810C1A5D51F2008304BB /* usingFunction.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +27,8 @@
 		B72D36011A4BAF4600406353 /* 01KnapsackProblem */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 01KnapsackProblem; sourceTree = BUILT_PRODUCTS_DIR; };
 		B72D36041A4BAF4600406353 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		B7E181081A5D5088008304BB /* testData.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = testData.txt; path = "../../../../Library/Developer/Xcode/DerivedData/01KnapsackProblem-efwjqjbwutnggwecywnlviywylfw/Build/Products/Debug/testData.txt"; sourceTree = "<group>"; };
+		B7E1810C1A5D51F2008304BB /* usingFunction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = usingFunction.cpp; sourceTree = "<group>"; };
+		B7E1810D1A5D51F2008304BB /* usingFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = usingFunction.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +63,8 @@
 			isa = PBXGroup;
 			children = (
 				B72D36041A4BAF4600406353 /* main.cpp */,
+				B7E1810C1A5D51F2008304BB /* usingFunction.cpp */,
+				B7E1810D1A5D51F2008304BB /* usingFunction.h */,
 			);
 			path = 01KnapsackProblem;
 			sourceTree = "<group>";
@@ -121,6 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B72D36051A4BAF4600406353 /* main.cpp in Sources */,
+				B7E1810E1A5D51F2008304BB /* usingFunction.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

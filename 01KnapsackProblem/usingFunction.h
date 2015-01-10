@@ -10,5 +10,32 @@
 #define ___1KnapsackProblem__usingFunction__
 
 #include <stdio.h>
+#include <vector>
+
+using namespace std;
+
+struct Item {
+    int value;
+    int weight;
+    float pricePerWeight;
+    bool isChosen = false;
+};
+
+enum ItemState { NON_SELECTED, SELECT, CONSIDERING};
+
+struct TreeNode {
+    float upperBound = 0;
+    int nextItem =  -1;
+    vector<ItemState> allItemState;
+    
+    //constructor
+    TreeNode(int NumItems) {
+        allItemState.assign(NumItems, CONSIDERING);
+    }
+};
+
+bool readFile(vector<int> &weights, vector<int> &values, int &constrain);
+void initializeItems(vector<Item> &x, const vector<int> weights, const vector<int> values);
+float calaulateUpperBound(TreeNode &n, vector<Item> &x, const int bagConstrain);
 
 #endif /* defined(___1KnapsackProblem__usingFunction__) */

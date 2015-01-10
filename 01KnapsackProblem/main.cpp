@@ -7,59 +7,66 @@
 //
 
 #include <iostream>
-#include <sstream>
-#include <fstream>
 #include <vector>
-
+#include <queue>
+#include "usingFunction.h"
 using namespace std;
-bool ReadFile(vector<int> &weights, vector<int> &values, int &constrain)
-{
-    ifstream infile("testData.txt"); // input file stream
-//    ofstream outfile("outData.txt"); // output file stream
-    
-    if (!infile) {
-        cout<<"file doesn't open!!\n";
+
+class compareUpperBound {
+public:
+    bool operator()(TreeNode& node1, TreeNode& node2) // Returns true if n1 is larger than n2
+    {
+        if (node1.upperBound > node2.upperBound) return true;
         return false;
     }
-    
-    int iteration = 1; // used to distinguish input lines
-    while (!infile.eof()) {
-        string line; // temp variable
-        int num;     // temp variable
-        
-        getline(infile, line);
-        stringstream ss(line);  //save to special data type(here is int)
-        while (ss >> num) {
-            if (iteration == 1) {
-                values.push_back(num);
-            }
-            else if (iteration == 2) {
-                weights.push_back(num);
-            }
-            else
-                constrain = num;
-        }
-        iteration++;
-    }
-    //Test the input:
-    cout<<"w: ";
-    for (int i=0; i<values.size(); i++) {
-        cout<<weights[i] <<" ";
-    }
-    infile.close();
-    return true;
-}
+};
+
 
 int main(int argc, const char * argv[]) {
     vector<int> weights;
     vector<int> values;
     int bagConstrain;
     
-    ReadFile(weights, values, bagConstrain);
+    readFile(weights, values, bagConstrain);
+    
+    vector<Item> x(weights.size());
     
     // calculate the price per weight
+    initializeItems(x, weights, values);
+    int numItem = (int) x.size();
+    // x must have to sort by x[i].pricePerWeight
     
-    // calculate the first upper bound
+    priority_queue<TreeNode, vector<TreeNode>, compareUpperBound> tree;
+    
+    TreeNode root(numItem);
+    root.nextItem = 0; // that is x[0]
+    root.upperBound = calaulateUpperBound(root, x, bagConstrain);
+    
+    tree.push(root);
+    
+//    printf("Upper Bound: %f\n", root.upperBound);
+    
+#ifdef DEBUG
+    for (int i=0; i<numItem; i++) {
+        printf("State : %d\n", root.allItemState[i]);
+    }
+#endif
+    
+    tree.push(root);
+    while ( !tree.empty() )
+    {
+        // pop the root of the tree of priority_queue
+        TreeNode topNode = tree.top(); tree.pop();
+        
+        
+        // if( u.b. < l.b ) 不展開
+        // else 對nextItem 展開兩點（take nextItem or not）
+        // Initialize the 2 nodes, including setting the nextItem and UpperBound
+        
+    }
+    
+    
+    
     
     return 0;
 }
