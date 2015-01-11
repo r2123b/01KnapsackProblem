@@ -16,7 +16,8 @@ using namespace std;
 
 bool readFile(vector<int> &weights, vector<int> &values, int &constrain)
 {
-    ifstream infile("testData.txt"); // input file stream
+    // the file is supposed to put in the same direction with .out
+    ifstream infile("testData2.txt"); // input file stream
     //    ofstream outfile("outData.txt"); // output file stream
     
     if (!infile) {
@@ -52,7 +53,7 @@ bool readFile(vector<int> &weights, vector<int> &values, int &constrain)
     return true;
 }
 
-void initializeItems(vector<Item> &x, const vector<int> weights, const vector<int> values)
+void initializeItems(vector<Item> &x, const vector<int> &weights, const vector<int> &values)
 {
     for (int i =0 ; i< x.size(); i++) {
         x[i].weight = weights[i];
@@ -67,7 +68,9 @@ void initializeItems(vector<Item> &x, const vector<int> weights, const vector<in
 //    }
 }
 
-float calaulateUpperBound(TreeNode &n, vector<Item> &x, const int bagConstrain)
+
+// calculate the fraction knapsack
+float calaulateUpperBound(TreeNode &n, const vector<Item> &x, const int bagConstrain)
 {
     float upperBound = 0;
     int remainWeight = bagConstrain;
@@ -108,4 +111,22 @@ float calaulateUpperBound(TreeNode &n, vector<Item> &x, const int bagConstrain)
     }
     
     return upperBound;
+}
+
+// calculate the 0/1 knapsack
+int calculateLowerBound(const vector<ItemState> &allItemState, const vector<Item> &x, const int bagConstrain) {
+    int nowConstrain = bagConstrain;
+    int totalValue = 0;
+    
+    for (int i=0; i<x.size(); i++) {
+        if (nowConstrain < x[i].weight && allItemState[i] == SELECT) {
+            return INFEASIBLE;
+        }
+        
+        if (allItemState[i] == SELECT) {
+            nowConstrain -= x[i].weight;
+            totalValue += x[i].value;
+        }
+    }
+    return totalValue;
 }

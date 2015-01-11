@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <vector>
+#define INFEASIBLE -100
 
 using namespace std;
 
@@ -35,7 +36,8 @@ struct TreeNode {
 };
 
 bool readFile(vector<int> &weights, vector<int> &values, int &constrain);
-void initializeItems(vector<Item> &x, const vector<int> weights, const vector<int> values);
-float calaulateUpperBound(TreeNode &n, vector<Item> &x, const int bagConstrain);
+void initializeItems(vector<Item> &x, const vector<int> &weights, const vector<int> &values);
+float calaulateUpperBound(TreeNode &n, const vector<Item> &x, const int bagConstrain);
+int calculateLowerBound(const vector<ItemState> &allItemState, const vector<Item> &x, const int bagConstrain);
 
 #endif /* defined(___1KnapsackProblem__usingFunction__) */

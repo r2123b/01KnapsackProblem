@@ -29,6 +29,7 @@
 		B7E181081A5D5088008304BB /* testData.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = testData.txt; path = "../../../../Library/Developer/Xcode/DerivedData/01KnapsackProblem-efwjqjbwutnggwecywnlviywylfw/Build/Products/Debug/testData.txt"; sourceTree = "<group>"; };
 		B7E1810C1A5D51F2008304BB /* usingFunction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = usingFunction.cpp; sourceTree = "<group>"; };
 		B7E1810D1A5D51F2008304BB /* usingFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = usingFunction.h; sourceTree = "<group>"; };
+		B7E1810F1A620F3C008304BB /* testData2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = testData2.txt; path = "../../../../Library/Developer/Xcode/DerivedData/01KnapsackProblem-efwjqjbwutnggwecywnlviywylfw/Build/Products/Debug/testData2.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +49,7 @@
 				B72D36031A4BAF4600406353 /* 01KnapsackProblem */,
 				B72D36021A4BAF4600406353 /* Products */,
 				B7E181081A5D5088008304BB /* testData.txt */,
+				B7E1810F1A620F3C008304BB /* testData2.txt */,
 			);
 			sourceTree = "<group>";
 		};
