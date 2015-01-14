@@ -15,8 +15,7 @@ using namespace std;
 
 class compareUpperBound {
 public:
-    bool operator()(TreeNode& node1, TreeNode& node2)
-    {
+    bool operator()(TreeNode& node1, TreeNode& node2) {
         if (node1.upperBound < node2.upperBound) return true;
         return false;
     }
@@ -32,11 +31,8 @@ int main(int argc, const char * argv[]) {
     readFile(weights, values, bagConstrain);
     
     vector<Item> x(weights.size());
-    
-    // calculate the price per weight
     initializeItems(x, weights, values);
     int numItem = (int) x.size();
-    // x must have to sort by x[i].pricePerWeight
     
     priority_queue<TreeNode, vector<TreeNode>, compareUpperBound> tree;
     
@@ -46,12 +42,6 @@ int main(int argc, const char * argv[]) {
     root.upperBound = calaulateUpperBound(root, x, bagConstrain);
     tree.push(root);
     int expandingNodeNum = 1;
-    
-//#ifdef DEBUG
-//    for (int i=0; i<numItem; i++) {
-//        printf("State : %d\n", root.allItemState[i]);
-//    }
-//#endif
     
     while ( !tree.empty() )
     {

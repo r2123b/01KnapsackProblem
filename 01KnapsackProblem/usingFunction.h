@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include <vector>
-#define INFEASIBLE -100
+#define INFEASIBLE -10000
 
 using namespace std;
 

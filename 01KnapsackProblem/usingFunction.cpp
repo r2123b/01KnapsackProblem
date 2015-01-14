@@ -17,7 +17,7 @@ using namespace std;
 bool readFile(vector<int> &weights, vector<int> &values, int &constrain)
 {
     // the file is supposed to put in the same direction with .out
-    ifstream infile("testData2.txt"); // input file stream
+    ifstream infile("testData.txt"); // input file stream
     //    ofstream outfile("outData.txt"); // output file stream
     
     if (!infile) {
