@@ -35,6 +35,8 @@ struct TreeNode {
     }
 };
 
+void printTreeNode(const TreeNode &node);
+
 bool readFile(vector<int> &weights, vector<int> &values, int &constrain);
 void initializeItems(vector<Item> &x, const vector<int> &weights, const vector<int> &values);
 float calaulateUpperBound(TreeNode &n, const vector<Item> &x, const int bagConstrain);

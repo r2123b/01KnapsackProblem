@@ -14,6 +14,17 @@
 
 using namespace std;
 
+void printTreeNode(const TreeNode &node) {
+    printf("U.B = %f\n",node.upperBound);
+    printf("State : ");
+    for (int i=0; i<node.allItemState.size(); i++) {
+        cout << node.allItemState[i] <<" ";
+    }
+    
+    printf("\nNextItem = %d\n",node.nextItem);
+}
+
+
 bool readFile(vector<int> &weights, vector<int> &values, int &constrain)
 {
     // the file is supposed to put in the same direction with .out
@@ -68,6 +79,33 @@ void initializeItems(vector<Item> &x, const vector<int> &weights, const vector<i
 //    }
 }
 
+int comparePricePerWeight(Item a, Item b)
+{
+    return (a.pricePerWeight > b.pricePerWeight);
+}
+
+int pickMaxPricePerWeight(const vector<Item> &x, bool *isPicked)
+{
+    int whichToChoose=0;
+    vector<Item> newX(x);
+    sort(newX.begin(), newX.end(), comparePricePerWeight);
+    
+    // pick item
+    for (int i=0; i<newX.size(); i++) {
+        if (isPicked[i] == false) {
+            whichToChoose = i;
+            isPicked[i] = true;
+            break;
+        }
+    }
+    // look up the x
+    for(int i=0; i<x.size(); i++) {
+        if (x[i].pricePerWeight == newX[whichToChoose].pricePerWeight) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 // calculate the fraction knapsack
 float calaulateUpperBound(TreeNode &n, const vector<Item> &x, const int bagConstrain)
@@ -75,8 +113,12 @@ float calaulateUpperBound(TreeNode &n, const vector<Item> &x, const int bagConst
     float upperBound = 0;
     int remainWeight = bagConstrain;
     vector<ItemState> state(n.allItemState);
+    bool isPicked[(int)state.size()];
+    for (int i=0; i<state.size(); i++)
+        isPicked[i] =false;
     
-    for (int i=0; i<x.size(); i++) {
+    for (int j=0; j<x.size(); j++) {
+        int i = pickMaxPricePerWeight(x, isPicked);
         if (state[i] == NON_SELECTED)
             continue;
         

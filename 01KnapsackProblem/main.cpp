@@ -34,6 +34,7 @@ int main(int argc, const char * argv[]) {
     initializeItems(x, weights, values);
     int numItem = (int) x.size();
     
+    
     priority_queue<TreeNode, vector<TreeNode>, compareUpperBound> tree;
     
     TreeNode optimalNode(numItem);
@@ -45,10 +46,10 @@ int main(int argc, const char * argv[]) {
     
     while ( !tree.empty() )
     {
-        // pop the root of the tree of priority_queue
         TreeNode topNode = tree.top();
         tree.pop();
         
+        // if topNode.upperBound < lowerBound, then don't expand
         if (topNode.upperBound < lowerBound)
             continue;
         // if( leaf ) update the lowerBound and continue
